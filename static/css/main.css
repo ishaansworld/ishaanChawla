@@ -12,12 +12,19 @@ body {
 .container {
     width: 60%;
     max-width: 1200px;
-    min-width: 700px;
     margin: 0 auto;
     background-color: white;
     padding: 20px;
     min-height: 100vh;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Media query for smaller screens */
+@media (max-width: 700px) {
+    .container {
+        width: 100%; /* Make it full width on smaller screens */
+        min-width: 100%; /* Override min-width for smaller screens */
+    }
 }
 
 /* Header Section */
