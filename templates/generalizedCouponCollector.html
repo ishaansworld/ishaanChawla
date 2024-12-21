@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html>  
+    <head>
+        <title> Ishaan Chawla </title>
+        <meta charset="utf-8">
+        
+        <meta name="author" content="Ishaan Chawla">
+        <meta name="description" content="Projects and Writing by Ishaan Chawla">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <meta name="handheldfriendly" content="true">
+        
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+
+        <!-- Open Graph -->
+        <meta property="og:locale" content="en_US" />
+		<meta property="og:title" content="Ishaan Chawla" />
+		<meta property="og:description" content="Projects and Writing by Ishaan Chawla" />
+		<meta property="og:url" content="http:///www.ishaanchawla.com/" />
+		<meta property="og:type" content="website"/>
+
+        <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+
+    </head>
+
+    <body>
+        <!-- Main content container -->
+        <div class="container">
+            <!-- Header Section -->
+            <header>
+                <br>
+                <h1>
+                    <a href="http://ishaanchawla.com" data-type="link" data-id="https://ishaanchawla.com">Ishaan Chawla</a>
+                </h1>
+                <nav>
+                    <ul>
+                        <li><a href="https://www.linkedin.com/in/ishaan-chawla" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="https://github.com/ishaansworld" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <!-- Post Section -->
+            <section class="posts">
+                <h2>
+                    Expectation in the Generalized Coupon Collector Without 
+                    Replacement Problem
+                </h2>
+
+                <small>Oct. 22, 2024</small>
+                <br><br>
+
+                <p>
+                    <!-- INTRO -->
+                    Recently, I attended a conference that held a raffle after its evening
+                    lectures. The program began early in the morning and went on until 7pm;
+                    many attendees had already left by the time the raffle began. This sparked
+                    the question:
+                    <br><br>
+                    <b>In a raffle with a total of \( t \) tickets, 
+                        \( p \) of which are held by people still participating, 
+                        on average, how many tickets would have to be drawn to 
+                        find a winner?</b>
+                    <br><br>
+                    This first problem was quick, and I solved it in three ways: 
+                    using recursion, linearity, and then a satisfying intuitive 
+                    argument that led to interesting extensions.
+                    <br><br>
+
+                    <!-- RECURSION -->
+                    <u>Recursion</u>
+                    <br><br>
+                    Let \( E_{k} \) represent the expected number of draws to 
+                    find a winning ticket when there are \( k \) tickets left in 
+                    the hat. Our goal, then, is to determine \(E_{t}\). It is 
+                    clear that:
+                    <div>
+                        \[
+                        E_{p} = 1
+                        \]
+                    </div>
+                    since, if we have narrowed down the hat to p tickets, they all 
+                    must be valid and only one draw will be needed. We can also see that:
+                    <div>
+                        \[
+                        E_{k} = 1 + \frac{k-p}{k}E_{k-1}
+                        \]
+                    </div>
+                    since after a draw, there is a \(\frac{k-p}{k}\) chance we will get 
+                    an invalid ticket and have to redraw. From the first few values, it's 
+                    easy to see what \(E_{t}\) equals:
+                    <div>
+                        \[
+                        E_{p} = 1 \\[5pt]
+                        E_{p+1} = 1 + \frac{1}{p+1}E_{p} = \frac{p+2}{p+1} \\[10pt]
+                        E_{p+2} = 1 + \frac{2}{p+2}E_{p+1} = \frac{p+3}{p+1} \\[10pt]
+                        \vdots \\[5pt]
+                        E_{t} = \frac{t+1}{p+1}.
+                        \]
+                    </div>
+                    
+
+                    <!-- LINEARITY -->
+                    <u>Linearity</u>
+                    <br><br>
+                    One thing that struck me in this answer was that every additional invalid 
+                    ticket increased the expected value by \(\frac{1}{p+1}\). Clearly, this was 
+                    because every invalid ticket has a \(\frac{1}{p+1}\) probability of appearing 
+                    before all valid tickets, and with linearity and some indicator variables, 
+                    it's easy to show that the expectation is simply \(1 + \frac{1}{p+1}(t-p) = 
+                    \frac{t+1}{p+1}\).
+                    <br><br>
+
+                    <!-- INTUITION -->
+                    <u>Intuitive Argument</u>
+                    <br><br>
+                    Looking at the \(t-p\) term in my new result, I realized that a rephrasing of 
+                    this question made the solution almost trivial.
+                    <br><br>
+                    <b> Define \(l=t-p\) as the number of people that left before the raffle 
+                        began. Find the expected number of draws necessary <u>before</u> a winning 
+                        ticket is found.
+                    </b>
+                    <br><br>
+                    This simple rewording helped me visualize this question very differently. 
+                    Imagine that we're assembling a full sequence of draws. If we have \(p\) 
+                    valid tickets, then we can place the remaining \(l\) invalid tickets either 
+                    at the front, between valid tickets, or at the end. In effect, there are 
+                    \(p+1\) 'holes' to be filled in with the \(l\) invalid tickets. 
+                    Thus, on average, each hole will get \(\frac{l}{p+1}\) tickets. 
+                    This of course means that, at the beginning of our sequence, on average we 
+                    expect to see \(\frac{l}{p+1}\) invalid tickets before finding a winner.
+                    <br><br>
+                    To match the answer to our original question, we simply add 1 to this 
+                    expectation to account for the final draw of picking the winning ticket.
+                    <br><br>
+
+                    <!-- TESTING 1 -->
+                    <u> Testing My Expectation</u>
+                    <br><br>
+                    Though the multiple derivations convinced me that my work was correct, 
+                    I wanted to see it in practice. To do this, I ran simulations using 
+                    Python. Here, I am finding the number of draws before a winning ticket 
+                    is found, as I considered in the intuitive solution.
+                    <br><br>
+                    I initialized \(t\) and \(p\) to arbitrary numbers and ran 20,000 trials, 
+                    tracking the number of draws in every simulation and updating my average. 
+                    After trying multiple values of \(t\) and \(p\), it was clear from my plots that 
+                    my formula was correct; the experimental averages indeed converged to my 
+                    predicted result.
+                    <figure class="image-container">
+                        <img src="{{ url_for('static', filename='images/exp1.1.png') }}" alt="first graph of expectation 1">
+                        <img src="{{ url_for('static', filename='images/exp1.2.png') }}" alt="second graph of expectation 1">
+                    </figure>
+                    <figcaption>Using varying values for \(t\) and \(p\). Both plots show strong convergence to predictions.</figcaption>
+                    <br>
+
+                    <!-- 2 COLORS -->
+                    <u>Extension to 2 Colors</u>
+                    <br><br>
+                    <b>Suppose, for some reason, we want to see both a valid and invalid ticket. Equivalently, 
+                        say we are drawing balls of 2 colors out of an urn without replacement and want to see both 
+                        colors. On average, if we start with \(a\) amber balls and \(b\) blue balls, how many draws without 
+                        replacement are needed before seeing both colors?
+                    </b>
+                    <br><br>
+                    This is actually a simple extension of the last problem. There are 2 cases: if we draw an amber ball 
+                    last, we expect to see \(\frac{b}{a+1}\) blue balls before success. Similarly, if we draw a blue ball 
+                    last, we expect to see \(\frac{a}{b+1}\) amber balls beforehand. The arguments for each are identical 
+                    to the previous intuitive argument.
+                    <br><br>
+                    Since these cases are mutually exclusive, it is easy to see that our new answer is simply the sum 
+                    of both expectations we calculated:
+                    <div>
+                        \[
+                        \frac{a}{b+1} + \frac{b}{a+1}.
+                        \]
+                    </div>
+                    Whereas before, if we got a valid ticket we stopped drawing, now, regardless of whichever type we 
+                    get first, we must keep drawing. Thus, we expect an increase from our last answer, and this result 
+                    seems to make sense.
+                    <br><br>
+                    <u>Testing the 2 Colors Case</u>
+                    <br><br>
+                    I modified my previous simulation to take in values for \(a\) and \(b\) to determine how many draws are 
+                    necessary before finding both colors. Once again, the experimental average converged to the results 
+                    of my expected value calculations.
+                    <figure class="image-container">
+                        <img src="{{ url_for('static', filename='images/exp2.1.png') }}" alt="first graph of expectation 2">
+                        <img src="{{ url_for('static', filename='images/exp2.2.png') }}" alt="second graph of expectation 2">
+                    </figure>
+                    <figcaption>Using varying values for \(a\) and \(b\). Both plots show strong convergence for the 2 colors case.</figcaption>
+                    <br>
+
+                    <!-- 3 COLORS -->
+                    <u>Extension to 3 Colors</u>
+                    <br><br>
+                    <b> Now, we have \(a\) amber balls, \(b\) blue balls, and \(c\) copper balls in an 
+                        urn. On average, how many draws must be made without replacement before drawing balls of all colors?
+                    </b>
+                    <br><br>
+                    This problem was harder to tackle. My instinct was that a quick extension of what I had done in the case of 
+                    2 colors wouldn't work. This time, the last color to appear could not define the entire progression of colors; 
+                    thus my cases, as I defined them, were no longer mutually exclusive.
+                    <br><br>
+                    I tested my theory experimentally. For \(a\) amber balls, \(b\) blue balls, and \(c\) copper balls, I tried:
+                    <div>
+                        \[
+                        \frac{a+b}{c+1} + \frac{a+c}{b+1} + \frac{b+c}{a+1}.
+                        \]
+                    </div>
+                    Sure enough, the experimental data showed this approach was wrong. My formula was overshooting the true 
+                    expected value.
+                    <figure class="image-container">
+                        <img src="{{ url_for('static', filename='images/expwrong.png') }}" alt="first graph of expectation 2">
+                    </figure>
+                    <figcaption>This formula was wrong, above the true value by over 1.25 in this case.</figcaption>
+                    <br>
+                    Looking at my formula, I saw that I was considering sets of 2 colors based on the last color. But what if 
+                    I also had to consider sets of a single color before the other 2?
+                    <br><br>
+                    One way to think about it is, regardless of the sequence of colors you draw from the urn, you can reorganize 
+                    them into 3 groups: those of the first color seen, those of the second, and the single ball from the third 
+                    and final color. The sequences don't really matter because we're counting the total number of draws, and on 
+                    average, we expect a constant number of balls in each group.
+                    Let's take the case of an amber ball coming out first or second. From this new perspective, it's clear that 
+                    the \(\frac{a+b}{c+1} + \frac{a+c}{b+1}\) contribution to our sum is overcounting the expected number of amber balls. 
+                    If we envision keeping the amber group at the front, it's clear that we overcounted the expected number of amber balls 
+                    appearing before blue and copper balls. Quantified, we overcounted by \(\frac{a}{b+c+1}\). Extending this logic to the 
+                    other colors, we have:
+                    <div>
+                        \[
+                        \frac{a+b}{c+1} + \frac{a+c}{b+1} + \frac{b+c}{a+1} - \frac{a}{b+c+1} - \frac{b}{a+c+1} - \frac{c}{a+b+1}.
+                        \]
+                    </div>
+                    
+                    <u>Testing the 3 Colors Case</u>
+                    <br><br>
+                    This time, the simulations showed my formula was correct. Indeed, correcting for overcounting by considering 1 
+                    color relative to the other 2 shifted the expectation down the correct amount.
+                    <figure class="image-container">
+                        <img src="{{ url_for('static', filename='images/exp3.1.png') }}" alt="first graph of expectation 3">
+                        <img src="{{ url_for('static', filename='images/exp3.2.png') }}" alt="second graph of expectation 3">
+                    </figure>
+                    <figcaption> Varying values for \(a\), \(b\), and \(c\). Both plots show strong convergence to the predicted mean.</figcaption>
+                    <br>
+
+                    <!-- N COLORS -->
+                    <u>Generalizing to N Colors</u>
+                    <br><br>
+                    Now, things were getting interesting. I was seeing something like the Principle of Inclusion and Exclusion (PIE) 
+                    being used in a problem similar to the coupon collector problem. However, rather than drawing from an infinite 
+                    pool with constant probabilities, here I was drawing from a finite urn. After figuring out the application of 
+                    PIE in the case of 3 colors, extending to \(n\) colors wasn't too difficult. Let's state the problem in 
+                    its extended form:
+                    <br><br>
+                    <b>
+                        In an urn, we have balls of \(n\) colors, with a total of \(\sum_{i=1}^{n} b_{i} = B\) balls, where \(b_{i}\) signifies
+                        the number of balls of the \(i^{th}\) color. What is the expected number of draws required before seeing 
+                        all \(n\) colors?
+                    </b>
+                    <br><br>
+                    Let \(U = \{1, 2,\dots,n\}\). A straightforward extension of my answer from the cases of 2 and 3 colors yielded:
+                    <div>
+                        \[
+                        \sum_{S \subseteq U, S \neq \emptyset} (-1)^{|S|-1}\frac{B - \sum_{i \in S} b_{i}}{\sum_{i \in S} b_{i} + 1}.
+                        \]
+                    </div>
+                    Written another way, we have:
+                    <div>
+                        \[
+                        \sum_{S \subseteq U, S \neq \emptyset} (-1)^{|S|-1}\frac{\sum_{i \in S^C} b_{i}}{\sum_{i \in S} b_{i} + 1}..
+                        \]
+                    </div>
+                    
+                    <u>Testing the N Colors Expectation</u>
+                    <br><br>
+                    Once again, we see excellent convergence to predicted results. It's worth noting that, due to the exponential 
+                    time complexity of working with all subsets of \(U\), \(n\) needs to be limited to around 25 or under.
+                    <figure class="image-container">
+                        <img src="{{ url_for('static', filename='images/exp4.1.png') }}" alt="first graph of expectation for N colors">
+                        <img src="{{ url_for('static', filename='images/exp4.2.png') }}" alt="second graph of expectation for N colors">
+                    </figure>
+                    <figcaption> Varying values of \(n\), the total number of colors, and the number of each color, randomly chosen in \([1, 50]\).</figcaption>
+                    <br>
+
+                    <!-- K OUT OF N COLORS -->
+                    <u>K Out of N Colors</u>
+                    <br><br>
+                    <b>
+                        A final challenge to address: We've now found how many draws are needed on average before seeing all 
+                        \(n\) colors, even with varying the numbers of balls of each color. But now, how do we calculate the expectation
+                        of draws before we see \(k\) out of \(n\) distinct colors?
+                    </b>
+                    <br><br>
+                    The key insight is to realize that the process of computing this expectation is very similar to any PIE 
+                    calculation where we calculate the number of elements in at least \(k\) of \(n\) sets, but with a bit of a twist.
+                    <br><br>
+                    First, we need to define some helpful terminology. In the last expectation formula, notice that values are positive 
+                    or negative depending on the cardinality of \(S\). This is common in PIE calculations, and we can in fact group these 
+                    partial sums by the cardinalities of \(S\) being considered. For instance, we'll calculate the sum for all subsets \(S\) 
+                    of length 1, then \(2\), and so on, keeping the absolute values of these quantities. Let's call these values \(v_1\), 
+                    \(v_2\), etc.
+                    <br><br>
+                    When solving a problem of this "at least \(k\) out of \(n\)" form, the only things that change are the coefficients of 
+                    each \(v_i\), and the starting point of the alternating sum. As is well known, for this particular PIE problem we 
+                    always see coefficients of the form:
+                    <div>
+                        \[
+                        {i-1 \choose k-1}.
+                        \]
+                    </div>
+                    However, in this case, we can't simply map these coefficients over to our problem. In our last expectation formula, 
+                    we were computing the number of draws required before seeing all colors. Essentially, we had the case of \(k=n\), 
+                    and the calculation was analogous to computing the number of elements in at least 1 subset. Interestingly, 
+                    we are not constructing our expectation based on seen colors, but rather based on unseen colors still in the 
+                    urn. We need to adjust our coefficients accordingly.
+                    <br><br>
+                    Thus, we see that when we have \(k=n-1\), we are performing a calculation analogous to computing the number of 
+                    elements in at least 2 subsets. Extending this, when we have an arbitrary \(k\), we're finding the number of 
+                    elements in at least \(n-k+1\) sets. Therefore, our coefficients are of the form:
+                    <div>
+                        \[
+                        {i-1 \choose n-k}.
+                        \]
+                    </div>
+                    So, for \(k=n-2\), we have \(v_3 - 3v_4 + 6v_5 - ...\), etc.
+                    <br><br>
+                    Further, we see that \(i = |S|\), and the choice of which values are positive and which are negative is 
+                    dependent upon \(n\), \(k\), and \(|S|\). Together, we have our expected value expression:
+                    <div>
+                        \[
+                        \sum_{S \subseteq U, S \neq \emptyset} (-1)^{n+k+|S|+1}{|S|-1 \choose n-k}\frac{\sum_{i \in S^C} b_{i}}{\sum_{i \in S} b_{i} + 1}.
+                        \]
+                    </div>
+
+                    <!-- TESTING K OF N COLORS -->
+                    <u>Testing K of N colors</u>
+                    <br><br>
+                    Once again, testing shows that the derived expression works incredibly well to predict the experimental results, 
+                    i.e., I've found a working solution to the generalized coupon collector without replacement problem.
+                    <figure class="image-container">
+                        <img src="{{ url_for('static', filename='images/exp5.1.png') }}" alt="first graph of expectation for K of N colors">
+                        <img src="{{ url_for('static', filename='images/exp5.2.png') }}" alt="second graph of expectation for K of N colors">
+                    </figure>
+                    <figcaption>Varying values of \(n\), the number of colors, and \(k\), the number of colors we wish to see. Again, the number of each color is chosen randomly in \([1, 50]\).</figcaption>
+                    <br>
+                    While I don't have rigorous proofs, I think there's sufficient intuition/evidence behind my work for the 
+                    purposes of this blog. I used Python in a Jupyter notebook, and I've put up the code on my 
+                    <a href="https://github.com/ishaansworld/GeneralizedCouponCollectorWithoutReplacement" data-type="link" data-id="https://github.com/ishaansworld/GeneralizedCouponCollectorWithoutReplacement">GitHub</a> 
+                    in case you'd like to try it out for yourself, or just see what I did in more detail.
+                </p>
+            </section>
+        </div>
+    </body>
+    </html>
