@@ -12,6 +12,7 @@ body {
 .container {
     width: 60%;
     max-width: 1200px;
+    min-width: 320px;
     margin: 0 auto;
     background-color: white;
     padding: 20px;
