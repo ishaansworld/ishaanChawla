@@ -15,7 +15,7 @@ body {
 .MathJax {
     max-width: 100% !important;
 }
-
+/*
 @media (max-width: 700px) {
     .MathJax_Display {
         font-size: 14px !important;
@@ -25,12 +25,11 @@ body {
         font-size: 14px !important;
     }
 
-    /* Scale down inline equations too */
     .MathJax_CHTML {
         font-size: 90% !important;
     }
 }
-
+*/
 /* Center the content in a white bar */
 .container {
     overflow-x: hidden;
