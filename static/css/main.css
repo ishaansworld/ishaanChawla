@@ -11,7 +11,7 @@ body {
 /* Center the content in a white bar */
 .container {
     width: 60%;
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
     background-color: white;
     padding: 20px;
@@ -22,8 +22,8 @@ body {
 /* Media query for smaller screens */
 @media (max-width: 700px) {
     .container {
-        width: 100% !important; /* Make it full width on smaller screens */
-        min-width: 100% !important; /* Override min-width for smaller screens */
+        width: 100%; /* Make it full width on smaller screens */
+        min-width: 100%; /* Override min-width for smaller screens */
     }
 }
 
