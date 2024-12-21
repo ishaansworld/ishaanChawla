@@ -10,7 +10,7 @@ body {
 
 /* Center the content in a white bar */
 .container {
-    width: 60%;
+    width: 700px;
     max-width: 100%;
     margin: 0 auto;
     background-color: white;
