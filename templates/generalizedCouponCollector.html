@@ -234,12 +234,14 @@
                     If we envision keeping the amber group at the front, it's clear that we overcounted the expected number of amber balls 
                     appearing before blue and copper balls. Quantified, we overcounted by \(\frac{a}{b+c+1}\). Extending this logic to the 
                     other colors, we have:
-                    <div>
+                    <div class="centered-container">
+                    <div class="centered-text">
                         \[
                         \frac{a+b}{c+1} + \frac{a+c}{b+1} + \frac{b+c}{a+1} \\
                         - \frac{a}{b+c+1} - \frac{b}{a+c+1} - \frac{c}{a+b+1}.
                         \]
                     </div>
+                </div>
                     
                     <u>Testing the 3 Colors Case</u>
                     <br><br>
@@ -288,7 +290,7 @@
                         <img src="{{ url_for('static', filename='images/exp4.1.png') }}" alt="first graph of expectation for N colors">
                         <img src="{{ url_for('static', filename='images/exp4.2.png') }}" alt="second graph of expectation for N colors">
                     </figure>
-                    <figcaption> Varying values of \(n\), the total number of colors, and the number of each color, randomly chosen in \([1, 50]\).</figcaption>
+                    <figcaption> Varying \(n\), the total number of colors. The number of each color was randomly chosen in \([1, 50]\).</figcaption>
                     <br>
 
                     <!-- K OUT OF N COLORS -->

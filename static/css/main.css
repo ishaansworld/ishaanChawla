@@ -15,21 +15,21 @@ body {
 .MathJax {
     max-width: 100% !important;
 }
-/*
-@media (max-width: 700px) {
-    .MathJax_Display {
-        font-size: 14px !important;
-    }
-    
-    .MathJax {
-        font-size: 14px !important;
-    }
 
-    .MathJax_CHTML {
-        font-size: 90% !important;
-    }
+/* for centering latex equations */
+.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Full width of the page */
+    margin: 0;
 }
-*/
+
+.centered-text {
+    text-align: center;
+    padding: 20px; /* Optional, adjust based on your design */
+}
+
 /* Center the content in a white bar */
 .container {
     overflow-x: hidden;
