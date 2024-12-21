@@ -8,6 +8,18 @@ body {
     
 }
 
+.MathJax_Display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
+}
+
+.MathJax {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
 /* Center the content in a white bar */
 .container {
     width: 750px;
