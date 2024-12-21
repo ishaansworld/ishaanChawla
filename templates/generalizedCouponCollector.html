@@ -22,25 +22,9 @@
 		<meta property="og:url" content="http:///www.ishaanchawla.com/" />
 		<meta property="og:type" content="website"/>
 
-        <script>
-            window.MathJax = {
-              tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\\[', '\\]']]
-              },
-              startup: {
-                pageReady: () => {
-                  return MathJax.startup.defaultPageReady();
-                }
-              }
-            };
-          </script>
-          <script id="MathJax-script" async 
-            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-          </script>
+        
         <script type="text/javascript" async
-            
-            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
         </script>
 
     </head>
@@ -113,10 +97,10 @@
                     easy to see what \(E_{t}\) equals:
                     <div>
                         \[
-                        E_{p} = 1 \\[5pt]
-                        E_{p+1} = 1 + \frac{1}{p+1}E_{p} = \frac{p+2}{p+1} \\[10pt]
-                        E_{p+2} = 1 + \frac{2}{p+2}E_{p+1} = \frac{p+3}{p+1} \\[10pt]
-                        \vdots \\[5pt]
+                        E_{p} = 1 \\
+                        E_{p+1} = 1 + \frac{1}{p+1}E_{p} = \frac{p+2}{p+1} \\
+                        E_{p+2} = 1 + \frac{2}{p+2}E_{p+1} = \frac{p+3}{p+1} \\
+                        \vdots \\
                         E_{t} = \frac{t+1}{p+1}.
                         \]
                     </div>
