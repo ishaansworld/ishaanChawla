@@ -95,16 +95,17 @@
                     since after a draw, there is a \(\frac{k-p}{k}\) chance we will get 
                     an invalid ticket and have to redraw. From the first few values, it's 
                     easy to see what \(E_{t}\) equals:
-                    <div>
-                        \[
-                        E_{p} = 1 \\
-                        E_{p+1} = 1 + \frac{1}{p+1}E_{p} = \frac{p+2}{p+1} \\
-                        E_{p+2} = 1 + \frac{2}{p+2}E_{p+1} = \frac{p+3}{p+1} \\
-                        \vdots \\
-                        E_{t} = \frac{t+1}{p+1}.
-                        \]
+                    <div class="centered-container">
+                        <div class="centered-text">
+                            \[
+                            E_{p} = 1 \\
+                            E_{p+1} = 1 + \frac{1}{p+1}E_{p} = \frac{p+2}{p+1} \\
+                            E_{p+2} = 1 + \frac{2}{p+2}E_{p+1} = \frac{p+3}{p+1} \\
+                            \vdots \\
+                            E_{t} = \frac{t+1}{p+1}.
+                            \]
+                        </div>
                     </div>
-                    
 
                     <!-- LINEARITY -->
                     <u>Linearity</u>
@@ -235,13 +236,13 @@
                     appearing before blue and copper balls. Quantified, we overcounted by \(\frac{a}{b+c+1}\). Extending this logic to the 
                     other colors, we have:
                     <div class="centered-container">
-                    <div class="centered-text">
-                        \[
-                        \frac{a+b}{c+1} + \frac{a+c}{b+1} + \frac{b+c}{a+1} \\
-                        - \frac{a}{b+c+1} - \frac{b}{a+c+1} - \frac{c}{a+b+1}.
-                        \]
+                        <div class="centered-text">
+                            \[
+                            \frac{a+b}{c+1} + \frac{a+c}{b+1} + \frac{b+c}{a+1} \\
+                            - \frac{a}{b+c+1} - \frac{b}{a+c+1} - \frac{c}{a+b+1}.
+                            \]
+                        </div>
                     </div>
-                </div>
                     
                     <u>Testing the 3 Colors Case</u>
                     <br><br>
@@ -278,7 +279,7 @@
                     Written another way, we have:
                     <div>
                         \[
-                        \sum_{S \subseteq U, S \neq \emptyset} (-1)^{|S|-1}\frac{\sum_{i \in S^C} b_{i}}{\sum_{i \in S} b_{i} + 1}..
+                        \sum_{S \subseteq U, S \neq \emptyset} (-1)^{|S|-1}\frac{\sum_{i \in S^C} b_{i}}{\sum_{i \in S} b_{i} + 1}.
                         \]
                     </div>
                     
@@ -337,10 +338,12 @@
                     <br><br>
                     Further, we see that \(i = |S|\), and the choice of which values are positive and which are negative is 
                     dependent upon \(n\), \(k\), and \(|S|\). Together, we have our expected value expression:
-                    <div>
-                        \[
-                        \sum_{S \subseteq U, S \neq \emptyset} (-1)^{n+k+|S|+1}{|S|-1 \choose n-k}\frac{\sum_{i \in S^C} b_{i}}{\sum_{i \in S} b_{i} + 1}.
-                        \]
+                    <div class="centered-container">
+                        <div class="centered-text">
+                            \[
+                            \sum_{S \subseteq U, S \neq \emptyset} (-1)^{n+k+|S|+1}{|S|-1 \choose n-k}\frac{\sum_{i \in S^C} b_{i}}{\sum_{i \in S} b_{i} + 1}.
+                            \]
+                        </div>
                     </div>
 
                     <!-- TESTING K OF N COLORS -->
