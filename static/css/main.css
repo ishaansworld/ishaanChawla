@@ -22,8 +22,8 @@ body {
 /* Media query for smaller screens */
 @media (max-width: 700px) {
     .container {
-        width: 100 !important%; /* Make it full width on smaller screens */
-        min-width: 100%; /* Override min-width for smaller screens */
+        width: 100% !important; /* Make it full width on smaller screens */
+        min-width: 100% !important; /* Override min-width for smaller screens */
     }
 }
 
